@@ -1,6 +1,7 @@
 
 
 -- getting the max score of hacker for every new challenge, here we are ingoring other scores of the same challenge if he has submitted multiple times
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 with max_score as (
 select hacker_id, challenge_id, max(score) as max_score_of_each_challenge from submissions 
 group by hacker_id, challenge_id),
@@ -59,6 +60,7 @@ order by total_score desc, hacker_id asc;
     --You cannot delete a hacker from the Hackers table if there are still submissions referencing that hacker in the Submissions table.
     --You must first delete all submissions related to that hacker (or update them) to remove the references.
     --Only then you can delete the hacker from the Hackers table without violating the foreign key constraint.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
     
 
 
