@@ -1,0 +1,5 @@
+with recursive numbers as 
+( select 2 as n union all select n + 1 from numbers where n + 1 <= 1000 ), 
+divisor as ( select 2 as d union all select d+1 from divisor where d+1 <= 1000 ), 
+primed as ( select n from numbers where not exists( select d from divisor where divisor.d < numbers.n AND numbers.n % divisor.d = 0 ) ) 
+select group_concat(n separator '&') from primed;
